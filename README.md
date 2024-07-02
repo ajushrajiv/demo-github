@@ -1,4 +1,4 @@
-Github actions demo 
+Github actions demo, test workflow
 
 GitHub Actions help you automate tasks within your software development life cycle. Here’s what each part of the code does:
 
