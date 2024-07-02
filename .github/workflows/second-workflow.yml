@@ -1,0 +1,37 @@
+name: second-workflow
+
+on:
+  push:
+    branches:
+      - second-branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    if: github.ref == 'refs/heads/second-branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run linter
+        run: echo "Hello from lint job and from ${GITHUB_REF##*/}"
+
+  test:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: echo "Hello from test job and from ${GITHUB_REF##*/}"
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy
+        run: echo "Hello from deploy job and from ${GITHUB_REF##*/}"
